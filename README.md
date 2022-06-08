@@ -6,13 +6,13 @@ Simple setup for Raspberry Pi, to automatically present the content available at
 
 This requires a SD card of 8GB or more. 
 
-First you will need to install the Raspberry Pi Operating System on your SD card
+First you will need to install the Raspberry Pi Operating System (OS) on your SD card
 
-1. Install the **Raspberry Pi Imager** tool on your laptop. 
+1. Install the **Raspberry Pi Imager** tool on your laptop: https://www.raspberrypi.com/software
 
-2. You can then use this tool to easily install the recommended OS for Raspberry pi (based on Debian) on your SD card: https://www.raspberrypi.com/software
+2. You can then use this tool to easily install the recommended OS for Raspberry pi (based on Debian) on your SD card
 
-3. Once the installation is done, open the SD card using your laptop file explorer, and copy this folder (with the `install.sh` and `start.sh` scripts) in the folder `/home/pi` in the SD card
+3. Once the installation is done, open the SD card using your laptop file explorer, and copy this folder (with the `install.sh` and `start.sh` scripts) in the folder `/home/pi` in the SD card (you should then find it in your user home folder after setting up your Raspberry Pi)
 
 You can now put the SD card in the Raspberry Pi. You will also need to connect a mouse, a keyboard and a screen to the Raspberry Pi to finish the setup.
 
