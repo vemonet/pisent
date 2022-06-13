@@ -48,7 +48,7 @@ If you need to add a new WiFi connection: plug the USB mouse and keyboard to the
 
 ## 📚️ Other actions
 
-### Connect via SSH
+### ⌨️ Connect via SSH
 
 Go to **Preferences** in the Raspberry Pi OS:
 
@@ -69,7 +69,7 @@ ssh pi@192.168.183.162
 
 > Password: damnthatsamsung23
 
-### Turn on/off TV
+### 💡 Turn on/off TV
 
 > cf. the `install.sh` script to install the required packages
 
@@ -85,14 +85,14 @@ Turn on:
 echo on 0 | cec-client -s -d 1
 ```
 
-You can add it to the CRON jobs to do it automatically from 8:00 to 20:00. Access the CRON configuration with the command `crontab -e` and add the following lines:
+You can add it to the CRON jobs to turn on the connected TV automatically, for example here from 8:00 to 20:00 every day, except Saturday and Sunday. Access the CRON configuration with the command `crontab -e` and add the following lines:
 
 ```bash
-0 20 * * * echo standby 0 | cec-client -s -d 1
-0 8 * * * echo on 0 | cec-client -s -d 1
+0 20 * * 1,2,3,4,5 echo standby 0 | cec-client -s -d 1
+0 8 * * 1,2,3,4,5 echo on 0 | cec-client -s -d 1
 ```
 
-### Try out YouTube TV
+### 📺️ Try out YouTube TV
 
 This requires a powerful Raspberry Pi, otherwise it will lag a lot for higher resolutions.
 
@@ -103,3 +103,35 @@ chromium-browser --enable-extensions --kiosk "https://www.youtube.com/tv"
 chromium-browser --enable-extensions --fullscreen "https://www.youtube.com/tv"
 ```
 
+### 🎶 Install Spotify
+
+Install [Raspotify](https://github.com/dtcooper/raspotify):
+
+```bash
+curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
+```
+
+> Checkout `/etc/default/raspotify` for more about configuration
+
+<details><summary>⚠️ Issue with sound to HDMI output</summary>
+
+It might happen that Raspotify does not manage to send the audio output to the HDMI by default. To fix it you can check the list of audio devices available to LibreSpot to get the ID of the device for HDMI:
+
+```bash
+librespot --device ?
+```
+
+Then change the configuration in `/etc/default/raspotify`:
+
+```bash
+LIBRESPOT_DEVICE="YOUR_DEVICE"
+```
+
+</details>
+
+Optionally you can install [bt-speaker](https://github.com/lukasjapan/bt-speaker) to make the Raspberry pi a bluetooth speaker:
+
+```bash
+sudo -i
+bash <(curl -s https://raw.githubusercontent.com/lukasjapan/bt-speaker/master/install.sh)
+```
