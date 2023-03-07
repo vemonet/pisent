@@ -111,7 +111,7 @@ Install [Raspotify](https://github.com/dtcooper/raspotify):
 curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
 ```
 
-> Checkout `/etc/default/raspotify` for more about configuration
+> Checkout `/etc/raspotify/conf` for more about configuration
 
 <details><summary>⚠️ Issue with sound to HDMI output</summary>
 
@@ -121,11 +121,13 @@ It might happen that Raspotify does not manage to send the audio output to the H
 librespot --device ?
 ```
 
-Then change the configuration in `/etc/default/raspotify`:
+Then change the configuration in `/etc/raspotify/conf`:
 
 ```bash
 LIBRESPOT_DEVICE="YOUR_DEVICE"
 ```
+
+It might solves it, temporarily. Then after a few restart the sound from spotify will stop working. Because the people who built it did their job really wrong. How hard is it to add a small `if hdmi plugged in and jack not plugged then sound goes to hdmi`? NOT HARD, but people just do things wrong all the times
 
 </details>
 
